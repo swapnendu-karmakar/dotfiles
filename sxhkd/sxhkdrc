@@ -1,0 +1,32 @@
+#reload sxhkd
+ctrl + Escape
+	pkill -USR1 -x sxhkd
+
+#terminal
+super + shift + Return
+        alacritty
+
+#arcolinux-logout
+super + shift + q
+	arcolinux-logout
+
+#filemanager
+super + alt + f
+	thunar
+
+#firefox
+super + alt + b
+	firefox
+
+#xterm
+super + alt + x
+	xterm
+
+#urxvt
+#super + alt + r
+#	urxvt
+
+#nitrogen
+super + alt + w
+	nitrogen --set-scaled --random 
+
