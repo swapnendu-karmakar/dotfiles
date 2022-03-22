@@ -4,7 +4,7 @@ ctrl + Escape
 
 #reload sxhkd
 super + p
-	dmenu_run
+	dmenu_run -h 22
 
 #terminal
 super + shift + Return
