@@ -1,0 +1,98 @@
+# reload sxhkd
+ctrl + Escape
+	pkill -USR1 -x sxhkd
+
+# terminal
+super + shift + Return
+        alacritty
+
+# arcolinux-logout
+super + shift + q
+	arcolinux-logout
+
+# filemanager
+super + alt + f
+	thunar
+
+# rofi
+super + alt + r
+	rofi -show drun
+
+# firefox
+super + alt + b
+	firefox
+
+# xterm
+super + alt + x
+	xterm
+
+# st
+super + alt + s
+	st
+
+# urxvt
+#super + alt + r
+#	urxvt
+
+# nitrogen
+super + alt + w
+	nitrogen --set-scaled --random 
+
+# dmenu
+super + p
+	dmenu_run -h 24
+
+## i3 specific keybindings ##
+
+# kill focused window
+super + shift + c
+	i3-msg kill
+
+# change focus & change focus between tiling / floating windows
+super+{h,j,k,l,space}
+	i3-msg focus {left,down,up,right,mode_toggle}
+
+# move focused window
+super+shift+{h,j,k,l}
+	i3-msg move {left,down,up,right}
+
+# split in horizontal orientation
+super+{c,v}
+        i3-msg split {h,v}
+
+# enter fullscreen mode for the focused container
+super+f
+	i3-msg fullscreen toggle
+
+# change container layout (toggle split)
+super+t
+	i3-msg layout toggle split
+
+# toggle tiling / floating
+super+shift+space
+	i3-msg floating toggle
+
+# resize window (you can also use the mouse for that)
+super + ctrl + {l,j,k,h}
+    i3-msg resize {grow width 1 px or 1 ppt, shrink height 1 px or 1 ppt, grow height 1 px or 1 ppt, shrink width 1 px or 1 ppt}
+
+# reload the configuration file
+super+shift+ctrl+c
+	i3-msg reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+super+shift+r
+	i3-msg restart
+
+# exit i3 (logs you out of your X session)
+super+shift+ctrl+q
+	i3-msg exit
+
+# move to scratchpad
+super+shift+s
+    i3-msg move scratchpad
+
+# show / hide scratchpad
+super+s
+    i3-msg scratchpad show
+
