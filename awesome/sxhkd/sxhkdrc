@@ -1,0 +1,43 @@
+# reload sxhkd
+ctrl + Escape
+	pkill -USR1 -x sxhkd
+
+# terminal
+super + shift + Return
+        alacritty
+
+# arcolinux-logout
+super + shift + q
+	arcolinux-logout
+
+# filemanager
+super + alt + f
+	thunar
+
+# rofi
+super + alt + r
+	rofi -show drun
+
+# firefox
+super + alt + b
+	firefox
+
+# xterm
+super + alt + x
+	xterm
+
+# st
+super + alt + s
+	st
+
+# urxvt
+#super + alt + r
+#	urxvt
+
+# nitrogen
+super + alt + w
+	nitrogen --set-scaled --random 
+
+# dmenu
+super + p
+	dmenu_run -h 24

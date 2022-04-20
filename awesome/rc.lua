@@ -3,20 +3,24 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-require("awful.autofocus")
+local gears             = require("gears")
+local awful             = require("awful")
+                          require("awful.autofocus")
+
 -- Widget and layout library
-local wibox = require("wibox")
+local wibox             = require("wibox")
+
 -- Theme handling library
-local beautiful = require("beautiful")
+local beautiful         = require("beautiful")
+
 -- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
+local naughty           = require("naughty")
+naughty.config.defaults['icon_size'] = 100
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+local hotkeys_popup     = require("awful.hotkeys_popup")
+                          require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -45,11 +49,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("~/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "vim"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -58,6 +62,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+altkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -141,13 +146,13 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags
+        filter  = awful.widget.tasklist.filter.focused
     }
 
     -- Create the wibox
     --height and width values are in pixels
     s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, width = 1366, opacity = 0.8 }) 
-                                                
+                           
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -164,17 +169,18 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 end)
+
 -- }}}
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    awful.key({ modkey, "Shift"   }, "Tab",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    awful.key({ modkey,           }, "Tab",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    awful.key({ altkey,           }, "Tab", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
@@ -259,16 +265,6 @@ for i = 1, 9 do
                         end
                   end,
                   {description = "view tag #"..i, group = "tag"}),
-        -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
-                  {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
@@ -278,19 +274,13 @@ for i = 1, 9 do
                               client.focus:move_to_tag(tag)
                           end
                      end
+                        local screen = awful.screen.focused()
+                        local tag = screen.tags[i]
+                        if tag then
+                           tag:view_only()
+                        end
                   end,
-                  {description = "move focused client to tag #"..i, group = "tag"}),
-        -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+                  {description = "move focused client to tag #"..i, group = "tag"})
     )
 end
 
@@ -375,7 +365,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
