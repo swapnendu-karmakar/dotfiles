@@ -15,7 +15,7 @@ $HOME/.config/bspwm/autostart.sh
 #bspc config border_radius       8
 
 #BSPWM border width
-bspc config border_width         2
+bspc config border_width         3
 
 #BSPWM gap between windows
 bspc config window_gap           5
@@ -28,7 +28,7 @@ bspc config right_padding        0
 
 #BSPWM monocle layout config
 bspc config single_monocle       false
-bspc config borderless_monocle   true
+bspc config borderless_monocle   false
 bspc config gapless_monocle      true
 
 #BSPWM click to focus
@@ -99,7 +99,7 @@ bspc rule -a Oblogout state=floating
 #bspc rule -a Skype state=floating
 #bspc rule -a Stacer state=floating
 #bspc rule -a Xfce4-appfinder state=floating sticky=on
-bspc rule -a Xfce4-terminal state=floating
+#bspc rule -a Xfce4-terminal state=floating
 
 #Tiled applications
 bspc rule -a Gnome-disks state=tiled

@@ -24,28 +24,26 @@ foreground = ${colors.foreground}
 
 ;border-size = 0
 border-color = ${colors.background}
-border-right-size = 2
+border-right-size = 0
 border-left-size = 2
 border-top-size = 2
 border-bottom-size = 2
 
 padding-left = 0
-padding-right = 0
+padding-right = 1
 
 module-margin-left = 0
-module-margin-right = 0
+module-margin-right = 1
 
-font-0 = "Hack Nerd Font:size=10;1"
-font-1 = "JetBrainsMono Nerd Font:size=20;4"
-font-2 = "Font Awesome:size=20;1"
-font-3 = "NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;"
-font-4 = "JoyPixels:fontformat=truetype:scale=10:antialias=false;"
-font-5 = "Ubuntu Regular:size=10;1"
-
+font-0 = "Hack Nerd Font:pixelsize=10;1"
+font-1 = "JetBrainsMono Nerd Font:size=10;1"
+font-2 = "NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;"
+font-3 = "JoyPixels:fontformat=truetype:scale=10:antialias=false;"
+font-4 = "Ubuntu Regular:pixelsize=10;1"
 
 modules-left = i3 xwindow
 ;modules-center =  
-modules-right = arrow0 up-speed arrow1 down-speed arrow2 cpu arrow1 memory arrow2 battery arrow1 date 
+modules-right = up-speed down-speed cpu memory battery date 
 
 tray-position = right
 tray-padding = 2
@@ -71,8 +69,8 @@ format = <label-state> <label-mode>
 pin-workspaces = false
 
 label-focused = %index%
-label-focused-background = ${colors.yellow}
-label-focused-foreground = ${colors.darkpurple}
+label-focused-background = ${colors.purple}
+label-focused-foreground = ${colors.foregrund}
 label-focused-padding = 1
 
 label-unfocused = %index%
@@ -102,56 +100,6 @@ label = %title%
 label-font = 1
 label-maxlen = 50
 
-
-[module/arrow0]
-type=custom/text
-;content = " "
-content = " "
-content-foreground = ${colors.yellow}
-content-background = ${colors.background}
-content-font = 2
-content-padding = 0
-
-[module/arrow1]
-type=custom/text
-content = ""
-content-foreground = ${colors.background}
-content-background = ${colors.yellow}
-content-font = 2 
-content-padding = 0
-
-[module/arrow2]
-type=custom/text
-content = ""
-content-foreground = ${colors.yellow}
-content-background = ${colors.background}
-content-font = 2
-content-padding = 0
-
-[module/arrow3]
-type=custom/text
-content = ""
-content-foreground = ${colors.darkred}
-content-background = ${colors.darkblue}
-content-font = 2
-content-padding = 0
-
-[module/arrow4]
-type=custom/text
-content = ""
-content-foreground = ${colors.darkaqua}
-content-background = ${colors.darkred}
-content-font = 2
-content-padding = 0
-
-[module/arrow5]
-type=custom/text
-content = ""
-content-foreground = ${colors.darkpurple}
-content-background = ${colors.darkaqua}
-content-font = 2
-content-padding = 0
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -159,14 +107,14 @@ interval = 2
 format = <label>
 
 format-prefix = " "
-format-prefix-padding = 0
+format-prefix-padding = 1
 format-prefix-foreground = ${colors.darkpurple}
-format-prefix-background = ${colors.yellow}
+format-prefix-background = ${colors.otherpurple}
 
 label = %percentage%%
 label-padding= 1
-label-foreground = ${colors.darkpurple}
-label-background = ${colors.yellow}
+label-foreground = ${colors.foreground}
+label-background = ${colors.darkpurple}
 
 [module/memory]
 type = internal/memory
@@ -175,14 +123,14 @@ interval = 2
 format = <label>
 
 format-prefix = " "
-format-prefix-padding = 0
-format-prefix-foreground = ${colors.green} 
-format-prefix-background = ${colors.background}
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.darkpurple} 
+format-prefix-background = ${colors.pink}
 
 label = %percentage_used%%
 label-padding = 1
 label-foreground = ${colors.foreground}
-label-background = ${colors.background}
+label-background = ${colors.darkpurple}
 
 [module/date]
 type = internal/date
@@ -193,15 +141,15 @@ time = "%I:%M %p"
 
 format = <label>
 
-format-prefix = " "
-format-prefix-padding = 0
-format-prefix-foreground = ${colors.orange} 
-format-prefix-background = ${colors.background}
+format-prefix = ""
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.darkpurple}
+format-prefix-background = ${colors.yellow}
 
 label = %date% %time%
 label-padding= 1
 label-foreground = ${colors.foreground}
-label-background = ${colors.background}
+label-background = ${colors.darkpurple}
 
 [module/battery]
 type = internal/battery
@@ -210,44 +158,42 @@ adapter = AC0
 full-at = 100
 
 format-full = <label-full>
-
-format-full-prefix = "  "
-format-full-prefix-padding = 0
+format-full-prefix = " "
+format-full-prefix-padding = 1
 format-full-foreground = ${colors.darkpurple}
-format-full-background = ${colors.yellow}
+format-full-background = ${colors.otherpurple}
 
 label-full = %percentage%%
-label-full-padding = 0
-label-full-foreground = ${colors.darkpurple}
-label-full-background = ${colors.yellow}
+label-full-padding = 1
+label-full-foreground = ${colors.foreground}
+label-full-background = ${colors.darkpurple}
 
 format-charging = <label-charging>
-
 format-charging-prefix = " "
-format-charging-prefix-padding = 0
+format-charging-prefix-padding = 1
 format-charging-foreground = ${colors.darkpurple} 
-format-charging-background = ${colors.yellow}
+format-charging-background = ${colors.orange}
 
 label-charging = %percentage%%
 label-charging-padding = 1
-label-charging-foreground = ${colors.darkpurple}
-label-charging-background = ${colors.yellow}
+label-charging-foreground = ${colors.foreground}
+label-charging-background = ${colors.darkpurple}
 
 format-discharging = <ramp-capacity><label-discharging>
 
-ramp-capacity-background = ${colors.yellow}
+ramp-capacity-background = ${colors.cyan}
 ramp-capacity-foreground = ${colors.darkpurple}
-ramp-capacity-padding = 0
-ramp-capacity-0 = "  "
-ramp-capacity-1 = "  "
-ramp-capacity-2 = "  "
-ramp-capacity-3 = "  "
-ramp-capacity-4 = "  "
+ramp-capacity-padding = 1
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
 
 label-discharging =  %percentage%%
-label-discharging-padding = 0
-label-discharging-foreground = ${colors.darkpurple} 
-label-discharging-background = ${colors.yellow}
+label-discharging-padding = 1
+label-discharging-foreground = ${colors.foreground} 
+label-discharging-background = ${colors.darkpurple}
 
 [module/up-speed]
 type = internal/network
@@ -257,14 +203,14 @@ udspeed-minwidth = 2
 format-connected = <label-connected>
 
 format-connected-prefix = " "
-format-connected-prefix-padding = 0
+format-connected-prefix-padding = 1
 format-connected-prefix-foreground = ${colors.darkpurple}
-format-connected-prefix-background = ${colors.yellow}
+format-connected-prefix-background = ${colors.green}
 
 label-connected = %upspeed%
-label-connected-padding = 0
-label-connected-foreground = ${colors.darkpurple}
-label-connected-background = ${colors.yellow}
+label-connected-padding = 1
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.darkpurple}
 
 [module/down-speed]
 type = internal/network
@@ -274,14 +220,14 @@ udspeed-minwidth = 2
 format-connected = <label-connected>
 
 format-connected-prefix = " "
-format-connected-prefix-padding = 0
-format-connected-prefix-foreground = ${colors.cyan}
-format-connected-prefix-background = ${colors.background}
+format-connected-prefix-padding = 1
+format-connected-prefix-foreground = ${colors.darkpurple}
+format-connected-prefix-background = ${colors.green}
 
 label-connected = %downspeed%
-label-connected-padding = 0
+label-connected-padding = 1
 label-connected-foreground = ${colors.foreground}
-label-connected-background = ${colors.background}
+label-connected-background = ${colors.darkpurple}
 
 [settings]
 screenchange-reload = true

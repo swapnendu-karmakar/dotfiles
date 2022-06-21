@@ -21,17 +21,6 @@ picom -b  --config ~/.config/picom/picom.conf &
 run "numlockx on"
 run "xfce4-clipman"
 run "volumeicon"
-#run "wal -R"
 #run "nitrogen --restore"
-feh --bg-scale ~/Downloads/gitthings/catppuccin-wallpapers/wallpapers/landscapes/forrest.png
-#run "conky -c $HOME/.config/arco-dwm/system-overview"
-#you can set wallpapers in themes as well
-#feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+feh --bg-scale ~/Downloads/gitthings/catppuccin-wallpapers/wallpapers/misc/cat_bunnies.png
 
-#run applications from startup
-
-#run "insync start"
-#run "spotify"
-#run "ckb-next -b"
-#run "discord"
-#run "telegram-desktop"

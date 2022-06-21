@@ -14,7 +14,15 @@ super + shift + q
 super + alt + f
 	thunar
 
-# rofi
+#vscode
+super + alt + c
+	code
+
+#intellij-IDEA
+super + alt + i
+	idea
+
+#rofi
 super + alt + r
 	rofi -show drun
 
