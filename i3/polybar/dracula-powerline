@@ -1,0 +1,298 @@
+[colors]
+background = #282a36
+foreground = #f8f8f2
+alert = #ff5555
+
+darkpurple = #44475a
+otherpurple = #6272a4
+cyan = #8be9fd
+green = #50fa7b
+orange = #ffb86c
+pink = #ff79c6
+purple = #bd93f9
+red = #ff5555
+yellow = #f1fa8c
+
+[bar/mainbar-i3]
+width = 100%
+height = 20
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+;border-size = 0
+border-color = ${colors.background}
+border-right-size = 2
+border-left-size = 2
+border-top-size = 2
+border-bottom-size = 2
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Hack Nerd Font:size=10;1"
+font-1 = "JetBrainsMono Nerd Font:size=20;4"
+font-2 = "Font Awesome:size=20;1"
+font-3 = "NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;"
+font-4 = "JoyPixels:fontformat=truetype:scale=10:antialias=false;"
+font-5 = "Ubuntu Regular:size=10;1"
+
+
+modules-left = i3 xwindow
+;modules-center =  
+modules-right = arrow0 up-speed arrow1 down-speed arrow2 cpu arrow1 memory arrow2 battery arrow1 date 
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = i3
+override-redirect = flase
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-default = " "
+
+format = <label-state> <label-mode>
+pin-workspaces = false
+
+label-focused = %index%
+label-focused-background = ${colors.yellow}
+label-focused-foreground = ${colors.darkpurple}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-background = #e60053
+
+enable-click = true
+enable-scroll = false
+
+;Separator in between workspaces
+label-separator = |
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-foreground = ${color.foreground}
+format-padding = 1
+
+label = %title%
+label-font = 1
+label-maxlen = 50
+
+
+[module/arrow0]
+type=custom/text
+;content = " "
+content = " "
+content-foreground = ${colors.yellow}
+content-background = ${colors.background}
+content-font = 2
+content-padding = 0
+
+[module/arrow1]
+type=custom/text
+content = ""
+content-foreground = ${colors.background}
+content-background = ${colors.yellow}
+content-font = 2 
+content-padding = 0
+
+[module/arrow2]
+type=custom/text
+content = ""
+content-foreground = ${colors.yellow}
+content-background = ${colors.background}
+content-font = 2
+content-padding = 0
+
+[module/arrow3]
+type=custom/text
+content = ""
+content-foreground = ${colors.darkred}
+content-background = ${colors.darkblue}
+content-font = 2
+content-padding = 0
+
+[module/arrow4]
+type=custom/text
+content = ""
+content-foreground = ${colors.darkaqua}
+content-background = ${colors.darkred}
+content-font = 2
+content-padding = 0
+
+[module/arrow5]
+type=custom/text
+content = ""
+content-foreground = ${colors.darkpurple}
+content-background = ${colors.darkaqua}
+content-font = 2
+content-padding = 0
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format = <label>
+
+format-prefix = " "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.darkpurple}
+format-prefix-background = ${colors.yellow}
+
+label = %percentage%%
+label-padding= 1
+label-foreground = ${colors.darkpurple}
+label-background = ${colors.yellow}
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+format = <label>
+
+format-prefix = " "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.green} 
+format-prefix-background = ${colors.background}
+
+label = %percentage_used%%
+label-padding = 1
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d %b %Y"
+time = "%I:%M %p"
+
+format = <label>
+
+format-prefix = " "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.orange} 
+format-prefix-background = ${colors.background}
+
+label = %date% %time%
+label-padding= 1
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC0
+full-at = 100
+
+format-full = <label-full>
+
+format-full-prefix = "  "
+format-full-prefix-padding = 0
+format-full-foreground = ${colors.darkpurple}
+format-full-background = ${colors.yellow}
+
+label-full = %percentage%%
+label-full-padding = 0
+label-full-foreground = ${colors.darkpurple}
+label-full-background = ${colors.yellow}
+
+format-charging = <label-charging>
+
+format-charging-prefix = " "
+format-charging-prefix-padding = 0
+format-charging-foreground = ${colors.darkpurple} 
+format-charging-background = ${colors.yellow}
+
+label-charging = %percentage%%
+label-charging-padding = 1
+label-charging-foreground = ${colors.darkpurple}
+label-charging-background = ${colors.yellow}
+
+format-discharging = <ramp-capacity><label-discharging>
+
+ramp-capacity-background = ${colors.yellow}
+ramp-capacity-foreground = ${colors.darkpurple}
+ramp-capacity-padding = 0
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
+ramp-capacity-4 = "  "
+
+label-discharging =  %percentage%%
+label-discharging-padding = 0
+label-discharging-foreground = ${colors.darkpurple} 
+label-discharging-background = ${colors.yellow}
+
+[module/up-speed]
+type = internal/network
+interface = wlo1
+udspeed-minwidth = 2
+
+format-connected = <label-connected>
+
+format-connected-prefix = " "
+format-connected-prefix-padding = 0
+format-connected-prefix-foreground = ${colors.darkpurple}
+format-connected-prefix-background = ${colors.yellow}
+
+label-connected = %upspeed%
+label-connected-padding = 0
+label-connected-foreground = ${colors.darkpurple}
+label-connected-background = ${colors.yellow}
+
+[module/down-speed]
+type = internal/network
+interface = wlo1
+udspeed-minwidth = 2
+
+format-connected = <label-connected>
+
+format-connected-prefix = " "
+format-connected-prefix-padding = 0
+format-connected-prefix-foreground = ${colors.cyan}
+format-connected-prefix-background = ${colors.background}
+
+label-connected = %downspeed%
+label-connected-padding = 0
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
