@@ -179,7 +179,9 @@ format-prefix-padding = 0
 format-prefix-foreground = ${colors.green} 
 format-prefix-background = ${colors.background}
 
-label = %percentage_used%%
+;label = %percentage_used%%
+;label = %gb_used%/%gb_total%
+label = %gb_used%
 label-padding = 1
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
