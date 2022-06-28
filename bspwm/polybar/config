@@ -1,43 +1,60 @@
 [colors]
-background = #1E1E2E
-background-alt = #302D41 
-foreground = #F5E0DC
-foreground-alt = #161320
-alert = #bd2c40
+background = #232634
+background-alt = #292c3c 
+foreground = #c6d0f5
+foreground-alt = #414559
+alert = #d20f39
+
+green = #a6d189
+red = #e78284
+maroon = #ea999c
+yellow = #e5c890
+blue = #8caaee
+teal = #81c8be
+sky = #99d1db
+orange = #ef9f76
+pink = #f4b8e4
+purple = #ca9ee6
+pinkish-white = #f2d5cf
+sapphire = #85c1dc
+lavender = #babbf1
 
 [bar/mainbar-bspwm]
 width = 100%
-height = 24
+height = 20
 radius = 0
 fixed-center = true
 
 background = ${colors.background}
-foreground = ${colors.foreground}
+foreground = ${colors.pinkish-white}
 
-border-size = 0
-border-color = #00000000
-;border-right-size = 0
-;border-left-size = 0
-;border-top-size = 2
-;border-bottom-size = 2
+;border-size = 0
+border-color = ${colors.background}
+border-right-size = 2
+border-left-size = 2
+border-top-size = 2
+border-bottom-size = 2
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0
+module-margin-right = 0
 
-font-0 = Ubuntu Regular:pixelsize=10;1
-font-1 = Hack Nerd Font:pixelsize=10;1
-font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = JoyPixels:fontformat=truetype:scale=10:antialias=false;
+font-0 = "Hack Nerd Font:size=10;1"
+font-1 = "JetBrainsMono Nerd Font:size=15;5"
+font-2 = "Font Awesome:size=20;1"
+font-3 = "NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;"
+font-4 = "JoyPixels:fontformat=truetype:scale=10:antialias=false;"
+font-5 = "Ubuntu Regular:size=10;1"
 
-modules-left = xwindow
-modules-center = bspwm 
-modules-right = cpu memory battery date 
+
+modules-left = bspwm xwindow
+;modules-center =  
+modules-right = arrow0 up-speed arrow1 down-speed arrow2 cpu arrow1 memory arrow2 battery arrow1 date 
 
 tray-position = right
-tray-padding = 2
+tray-padding = 1
 ;tray-background = #0063ff
 
 wm-restack = bspwm
@@ -49,21 +66,32 @@ cursor-scroll = ns-resize
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = [ %index% ]
-label-focused-background = ${colors.background}
-label-focused-foreground = #F28FAD
-label-focused-padding = 2
+format = <label-state> <label-mode>
 
-label-occupied = { %index% }
-label-occupied-padding = 2
+label-focused = %index%
+label-focused-background = ${colors.maroon}
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-padding = 1
+
+label-occupied = %index%
+label-occupied-background = ${colors.foreground-alt}
+label-occupied-foreground = ${colors.pinkish-white}
+label-occupied-padding = 1
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-foreground = ${colors.foreground-alt}
+label-urgent-padding = 1
 
 label-empty = %index%
-label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
+label-empty-background = ${colors.background}
+label-empty-foreground = ${colors.pinkish-white}
+label-empty-padding = 1
+
+label-monocle = "[M] "
+label-tiled = "[]= "
+label-fullscreen = "[F] "
+label-floating = "><> "
 
 ;Separator in between workspaces
 ;label-separator = |
@@ -71,49 +99,95 @@ label-empty-padding = 2
 [module/xwindow]
 type = internal/xwindow
 format = <label>
-format-foreground = ${color.foreground}
-format-padding = 4
+format-padding = 0
 
-label = %title%
-label-maxlen = 50
+label = "| %title%"
+label-font = 1
+label-maxlen = 40
 
-[module/xbacklight]
-type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
+[module/arrow0]
+type=custom/text
+;content = " "
+content = " "      
+content-foreground = ${colors.maroon}
+content-background = ${colors.background}
+content-font = 2
+content-padding = 0
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+[module/arrow1]
+type=custom/text
+content = " "
+content-foreground = ${colors.foreground-alt}
+content-background = ${colors.maroon}
+content-font = 2 
+content-padding = 0
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+[module/arrow2]
+type=custom/text
+content = " "
+content-foreground = ${colors.maroon}
+content-background = ${colors.foreground-alt}
+content-font = 2
+content-padding = 0
+
+[module/arrow3]
+type=custom/text
+content = " "
+content-foreground = ${colors.maroon}
+content-background = ${colors.foreground-alt}
+content-font = 2
+content-padding = 0
+
+[module/arrow4]
+type=custom/text
+content = " "
+content-foreground = ${colors.darkaqua}
+content-background = ${colors.darkred}
+content-font = 2
+content-padding = 0
+
+[module/arrow5]
+type=custom/text
+content = " "
+content-foreground = ${colors.darkpurple}
+content-background = ${colors.darkaqua}
+content-font = 2
+content-padding = 0
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "[    "
-format-prefix-foreground = #ABE9B3
-label = %percentage:2%% ]
-label-foreground = #ABE9B3
+
+format = <label>
+
+format-prefix = "   "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-background = ${colors.maroon}
+
+label = %percentage%%
+label-padding = 0 
+label-foreground = ${colors.foreground-alt}
+label-background = ${colors.maroon}
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "[     "
-format-prefix-foreground = #E8A2AF
-label = %percentage_used%% ]
-label-foreground = #E8A2AF
+
+format = <label>
+
+format-prefix = " "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.green}
+format-prefix-background = ${colors.foreground-alt} 
+
+;label = %percentage_used%%
+;label = %gb_used%/%gb_total%
+label = %gb_used%
+label-padding = 1
+label-foreground = ${colors.pinkish-white}
+label-background = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -122,12 +196,17 @@ interval = 5
 date = "%d %b %Y"
 time = "%I:%M %p"
 
-format = <label>
-format-prefix = "[    "
-format-prefix-foreground = #FAE3B0
+format = <label>
 
-label = %date% %time% ]
-label-foreground = #FAE3B0
+format-prefix = " "
+format-prefix-padding = 0
+format-prefix-foreground = ${colors.orange} 
+format-prefix-background = ${colors.foreground-alt}
+
+label = %date% %time%
+label-padding= 1
+label-foreground = ${colors.pinkish-white}
+label-background = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -136,27 +215,78 @@ adapter = AC0
 full-at = 100
 
 format-full = <label-full>
-format-full-foreground = #96CDFB
-format-full-prefix = "[    "
-label-full = %percentage%% ]
+
+format-full-prefix = "  "
+format-full-prefix-padding = 0
+format-full-foreground = ${colors.foreground-alt}
+format-full-background = ${colors.maroon}
+
+label-full = %percentage%%
+label-full-padding = 0
+label-full-foreground = ${colors.foreground-alt}
+label-full-background = ${colors.maroon}
 
 format-charging = <label-charging>
-format-charging-prefix = "[    "
-format-charging-foreground = #96CDFB
-label-charging = %percentage%% ]
-label-charging-foreground = #96CDFB
-label-charging-background = ${colors.background}
 
-format-discharging = <ramp-capacity> <label-discharging>
-label-discharging =  %percentage%% ]
-label-discharging-foreground = #F5C2E7 
+format-charging-prefix = " "
+format-charging-prefix-padding = 0
+format-charging-foreground = ${colors.foreground-alt}
+format-charging-background = ${colors.maroon}
 
-ramp-capacity-0 = "[    "
-ramp-capacity-1 = "[    "
-ramp-capacity-2 = "[    "
-ramp-capacity-3 = "[    "
-ramp-capacity-4 = "[    "
-ramp-capacity-foreground = #F5C2E7
+label-charging = %percentage%%
+label-charging-padding = 1
+label-charging-foreground = ${colors.foreground-alt}
+label-charging-background = ${colors.maroon}
+
+format-discharging = <ramp-capacity><label-discharging>
+
+ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-background = ${colors.maroon}
+ramp-capacity-padding = 0
+ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
+ramp-capacity-4 = "  "
+
+label-discharging =  %percentage%%
+label-discharging-padding = 0
+label-discharging-foreground = ${colors.foreground-alt}
+label-discharging-background = ${colors.maroon}
+
+[module/up-speed]
+type = internal/network
+interface = wlo1
+udspeed-minwidth = 2
+
+format-connected = <label-connected>
+
+format-connected-prefix = " "
+format-connected-prefix-padding = 0
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-background = ${colors.maroon}
+
+label-connected = %upspeed%
+label-connected-padding = 0
+label-connected-foreground = ${colors.foreground-alt}
+label-connected-background = ${colors.maroon}
+
+[module/down-speed]
+type = internal/network
+interface = wlo1
+udspeed-minwidth = 2
+
+format-connected = <label-connected>
+
+format-connected-prefix = " "
+format-connected-prefix-padding = 0
+format-connected-prefix-foreground = ${colors.blue}
+format-connected-prefix-background = ${colors.foreground-alt}
+
+label-connected = %downspeed%
+label-connected-padding = 0
+label-connected-foreground = ${colors.pinkish-white}
+label-connected-background = ${colors.foreground-alt}
 
 [settings]
 screenchange-reload = true
