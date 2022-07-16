@@ -21,6 +21,7 @@ picom -b  --config ~/.config/picom/picom.conf &
 run "numlockx on"
 run "xfce4-clipman"
 run "volumeicon"
+~/.fehbg &
 #run "nitrogen --restore"
-feh --bg-scale ~/Downloads/gitthings/catppuccin-wallpapers/wallpapers/misc/cat_bunnies.png
+#feh --bg-scale ~/Downloads/gitthings/catppuccin-wallpapers/wallpapers/misc/cat_bunnies.png
 
