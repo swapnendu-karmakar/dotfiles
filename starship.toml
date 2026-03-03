@@ -39,11 +39,11 @@ symbol = " "
 [elixir]
 symbol = " "
 
+[python]
+symbol = ''
+
 [elm]
 symbol = " "
-
-[git_branch]
-symbol = " "
 
 [golang]
 symbol = " "
@@ -75,9 +75,6 @@ symbol = " "
 [php]
 symbol = " "
 
-[python]
-symbol = " "
-
 [ruby]
 symbol = " "
 
@@ -92,3 +89,4 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
+
