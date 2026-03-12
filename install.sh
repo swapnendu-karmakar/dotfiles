@@ -51,6 +51,7 @@ applying_dots () {
   cp niri/dms/binds.kdl ~/.config/niri/dms/binds.kdl
   cp starship.toml ~/.config/starship.toml
   cp .zshrc ~/.zshrc
+  ln -sf ~/.cache/wal/dank-pywalfox.json ~/.cache/wal/colors.json
   cp -r gtk-3.0 ~/.config/
   cp -r gtk-4.0 ~/.config/
   cp -r qt5ct ~/.config/
